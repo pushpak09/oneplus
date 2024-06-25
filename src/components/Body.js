@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listData, setListData] = useState([]);
@@ -59,7 +60,7 @@ const Body = () => {
   ) : (
     <div className="body-container">
       <div className="filters">
-        <div>
+        <div className="search-btn-wrapper">
           <input
             type="text"
             onChange={(e) => {
@@ -80,7 +81,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredData.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"restaurants/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
