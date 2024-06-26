@@ -2,6 +2,8 @@ import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import onlineStatus from "../utils/useOnlineStatus";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listData, setListData] = useState([]);
@@ -54,6 +56,12 @@ const Body = () => {
     );
     setFilteredData(updatedList);
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return <h1>Please check Your Internet Connection</h1>;
+  }
 
   return listData.length === 0 ? (
     <h1 className="load-data">Loading...</h1>
