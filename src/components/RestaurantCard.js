@@ -15,4 +15,17 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+export const enhancedRestaurantCard = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <>
+        <div className="absolute bg-black text-zinc-100 m-2 p-1 rounded-sm text-xs">
+          Promoted
+        </div>
+        <RestaurantCard {...props} />
+      </>
+    );
+  };
+};
+
 export default RestaurantCard;
