@@ -1,4 +1,8 @@
-/* Header */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Header
 .header {
   display: flex;
   justify-content: space-between;
@@ -28,7 +32,7 @@
   color: inherit;
 }
 
-/* Body */
+
 .res-container {
   display: flex;
   width: 100%;
@@ -112,6 +116,8 @@
   background: linear-gradient(45deg, #f16767, #0000);
   border: 1px solid #ccc;
 }
+
+ */
 
 .green {
   background-color: green;

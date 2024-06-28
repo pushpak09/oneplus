@@ -66,20 +66,26 @@ const Body = () => {
   return listData.length === 0 ? (
     <h1 className="load-data">Loading...</h1>
   ) : (
-    <div className="body-container">
-      <div className="filters">
-        <div className="search-btn-wrapper">
+    <div className="body-container flex flex-wrap justify-center items-center ">
+      <div className="filters flex items-center justify-center">
+        <div className="m-4 p-4">
           <input
+            className="border border-black rounded-sm h-9"
             type="text"
             onChange={(e) => {
               handleInputChange(e);
             }}
             value={inputVal}
           />
-          <button onClick={searchRestaurantClick}>Search</button>
+          <button
+            className="p-2 bg-red-700 rounded-sm text-white"
+            onClick={searchRestaurantClick}
+          >
+            Search
+          </button>
         </div>
         <button
-          className="top-rated-cta"
+          className="bg-red-700 p-2 rounded-sm text-white"
           onClick={() => {
             topRatedRest();
           }}
@@ -87,9 +93,10 @@ const Body = () => {
           Top Rated Restaurants
         </button>
       </div>
-      <div className="res-container">
+      <div className="res-container container flex flex-wrap justify-center ">
         {filteredData.map((restaurant) => (
           <Link
+            className="bg-slate-200 m-2 rounded-sm hover:scale-105 hover:shadow-xl hover:ease-in-out duration-300"
             key={restaurant.info.id}
             to={"restaurants/" + restaurant.info.id}
           >
