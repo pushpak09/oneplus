@@ -12,8 +12,6 @@ const Body = () => {
 
   const PromotedRestaurantCards = enhancedRestaurantCard(RestaurantCard);
 
-  console.log("rest", listData);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -42,7 +40,8 @@ const Body = () => {
   };
 
   const topRatedRest = () => {
-    const filteredList = listData.filter((val) => val.info.avgRating > 4);
+    const filteredList = listData.filter((val) => val.info.avgRating > 4.5);
+    console.log("filteredList", filteredList);
     setListData(filteredList);
   };
 
