@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { enhancedRestaurantCard } from "./RestaurantCard";
 import resList from "../utils/mockData";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body = () => {
   const [listData, setListData] = useState([]);
   const [inputVal, setInputVal] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+
+  const PromotedRestaurantCards = enhancedRestaurantCard(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -38,7 +40,8 @@ const Body = () => {
   };
 
   const topRatedRest = () => {
-    const filteredList = listData.filter((val) => val.info.avgRating > 4);
+    const filteredList = listData.filter((val) => val.info.avgRating > 4.5);
+    console.log("filteredList", filteredList);
     setListData(filteredList);
   };
 
@@ -100,7 +103,11 @@ const Body = () => {
             key={restaurant.info.id}
             to={"restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.isOpen ? (
+              <PromotedRestaurantCards resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
